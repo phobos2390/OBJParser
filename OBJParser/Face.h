@@ -5,18 +5,15 @@
 
 using namespace std;
 
-namespace Data
+class Face
 {
-	class Face
-	{
-	private:
-		vector<FaceVertex> vertices;
-	public:
-		Face(FaceVertex first, FaceVertex second, FaceVertex third);
-		Face(vector<FaceVertex> vertices);
-		~Face();
-		void addVertex(FaceVertex vertex);
-		vector<FaceVertex> getVertices();
-		string toString();
-	};
-}
+private:
+	vector<FaceVertex> vertices;
+public:
+	Face(FaceVertex first, FaceVertex second, FaceVertex third);
+	Face(vector<FaceVertex> vertices);
+	~Face();
+	void addVertex(FaceVertex vertex);
+	vector<FaceVertex> getVertices();
+	string toString();
+};

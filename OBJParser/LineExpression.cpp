@@ -4,7 +4,6 @@
 #include <vector>
 #include <sstream>
 #include <string>
-#include "conversionFuncs.h"
 
 using namespace std;
 
@@ -23,10 +22,17 @@ void* LineExpression::interpret(void*context)
 	while (parser->currentTokenTypeIs(LINE))
 	{
 		parser->match(LINE);
+		pair<int, int> vectorValues;
+		string input = parser->getCurrentTokenInput();
+		stringstream ss;
 		pair<int, int> lineVertices;
-		lineVertices.first = myAtoi(parser->getCurrentTokenInput());
+		ss << parser->getCurrentTokenInput();
+		ss >> lineVertices.first;
+		ss.clear();
 		parser->match(NUMBER);
-		lineVertices.second = myAtoi(parser->getCurrentTokenInput());
+		ss << parser->getCurrentTokenInput();
+		ss >> lineVertices.second;
+		ss.clear();
 		parser->match(NUMBER);
 		this->expression->addLine(lineVertices);
 	}

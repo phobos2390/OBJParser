@@ -9,7 +9,6 @@ class IScannerState
 	 virtual void readDigit() = 0;
 	 virtual void readPeriod() = 0;
 	 virtual void readDash() = 0;
-	 virtual void readUnderscore() = 0;
 	 virtual void readCapitalAlphaChar() = 0;
 	 virtual void readAlphaChar() = 0;
 	 virtual void readWhiteSpace() = 0;

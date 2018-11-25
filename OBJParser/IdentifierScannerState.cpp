@@ -18,15 +18,6 @@ IdentifierScannerState::IdentifierScannerState(Scanner* scanner) :scanner(scanne
 	this->keyWords["vp"] = PSV;
 	this->keyWords["l"] = LINE;
 	this->keyWords["off"] = OFF;
-	this->keyWords["newmtl"] = NEWMTL;
-	this->keyWords["Ns"] = SPECULAR_EXP;
-	this->keyWords["Ni"] = REFRACTION;
-	this->keyWords["Ka"] = COLOR_AMBIENT;
-	this->keyWords["Kd"] = COLOR_DIFFUSE;
-	this->keyWords["Ks"] = COLOR_SPECULAR;
-	this->keyWords["d"] = TRANSPARENCY;
-	this->keyWords["illum"] = ILLUMINATION;
-	this->keyWords["g"] = GROUP;
 }
 
 IdentifierScannerState::~IdentifierScannerState(){}
@@ -64,11 +55,6 @@ void IdentifierScannerState::readCapitalAlphaChar()
 void IdentifierScannerState::readAlphaChar()
 {
 	this->scanner->passIntoBuffer(this->scanner->getNext());
-}
-
-void IdentifierScannerState::readUnderscore()
-{
-	readAlphaChar();
 }
 
 void IdentifierScannerState::readPeriod()

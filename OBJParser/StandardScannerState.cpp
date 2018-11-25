@@ -25,11 +25,6 @@ void StandardScannerState::readCapitalAlphaChar()
 	scanner->setState(scanner->getIdentifierState());
 }
 
-void StandardScannerState::readUnderscore()
-{
-	readCapitalAlphaChar();
-}
-
 void StandardScannerState::readAlphaChar()
 {
 	scanner->setState(scanner->getIdentifierState());

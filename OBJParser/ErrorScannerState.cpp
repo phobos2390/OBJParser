@@ -12,8 +12,6 @@ void ErrorScannerState::readPeriod(){}
 
 void ErrorScannerState::readDash(){}
 
-void ErrorScannerState::readUnderscore(){}
-
 void ErrorScannerState::readCapitalAlphaChar(){}
 
 void ErrorScannerState::readAlphaChar(){}

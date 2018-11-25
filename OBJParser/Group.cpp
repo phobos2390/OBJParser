@@ -1,121 +1,108 @@
 #include "Group.h"
 #include <sstream>
 
-namespace Data
+Group::Group() :hasTexture(false), hasMaterial(false), smoothBeenSet(false)
 {
-	Group::Group() :hasTexture(false), hasMaterial(false), smoothBeenSet(false)
-	{
-	}
+}
 
-	Group::~Group()
-	{
-	}
+Group::~Group()
+{
+}
 
-	string Group::getMaterial()
-	{
-		return this->useMtl;
-	}
+string Group::getMaterial()
+{
+	return this->useMtl;
+}
 
-	string Group::getTexture()
-	{
-		return this->useMap;
-	}
+string Group::getTexture()
+{
+	return this->useMap;
+}
 
-	bool Group::isSmooth()
-	{
-		return this->smooth;
-	}
+bool Group::isSmooth()
+{
+	return this->smooth;
+}
 
-	vector<Face>::iterator Group::getFacesBegin()
-	{
-		return this->faces.begin();
-	}
+vector<Face> Group::getFaces()
+{
+	return this->faces;
+}
 
-	vector<Face>::iterator Group::getFacesEnd()
-	{
-		return this->faces.end();
-	}
+void Group::setMaterial(string material)
+{
+	this->hasMaterial = true;
+	this->useMtl = material;
+}
 
-	void Group::setMaterial(string material)
-	{
-		this->hasMaterial = true;
-		this->useMtl = material;
-	}
+void Group::setTexture(string texture)
+{
+	this->hasTexture = true;
+	this->useMap = texture;
+}
 
-	void Group::setTexture(string texture)
-	{
-		this->hasTexture = true;
-		this->useMap = texture;
-	}
+void Group::setSmooth(bool smooth)
+{
+	this->smoothBeenSet = true;
+	this->smooth = smooth;
+}
 
-	void Group::setSmooth(bool smooth)
-	{
-		this->smoothBeenSet = true;
-		this->smooth = smooth;
-	}
+void Group::setFaces(vector<Face> faces)
+{
+	this->faces = faces;
+}
 
-	void Group::setFaces(vector<Face> faces)
-	{
-		this->faces = faces;
-	}
+void Group::addFace(Face face)
+{
+	this->faces.push_back(face);
+}
 
-	void Group::addFace(Face face)
-	{
-		this->faces.push_back(face);
-	}
+bool Group::hasTextureBeenSet()
+{
+	return this->hasTexture;
+}
 
-	bool Group::hasTextureBeenSet()
-	{
-		return this->hasTexture;
-	}
+bool Group::hasMaterialBeenSet()
+{
+	return this->hasMaterial;
+}
 
-	bool Group::hasMaterialBeenSet()
-	{
-		return this->hasMaterial;
-	}
+bool Group::hasSmoothBeenSet()
+{
+	return this->smoothBeenSet;
+}
 
-	bool Group::hasSmoothBeenSet()
+string Group::toString()
+{
+	stringstream ss;
+	string outerTabAmount = "\t\t\t";
+	string innerTabAmount = "\t\t\t\t";
+	string separator = "\n";
+	if (this->hasMaterial)
 	{
-		return this->smoothBeenSet;
+		ss << "Material: " << this->useMtl << separator << outerTabAmount;
 	}
-
-	void Group::clearFaces()
+	if (this->hasTexture)
 	{
-		this->faces = vector<Face>();
+		ss << "Texture: " << this->useMap << separator << outerTabAmount;
 	}
-
-	string Group::toString()
+	if (this->smoothBeenSet)
 	{
-		stringstream ss;
-		string outerTabAmount = "\t\t\t";
-		string innerTabAmount = "\t\t\t\t";
-		string separator = "\n";
-		if (this->hasMaterial)
+		if (this->smooth)
 		{
-			ss << "Material: " << this->useMtl << separator << outerTabAmount;
+			ss << "Smooth Shading" << separator << outerTabAmount;
 		}
-		if (this->hasTexture)
+		else
 		{
-			ss << "Texture: " << this->useMap << separator << outerTabAmount;
+			ss << "Flat Shading" << separator << outerTabAmount;
 		}
-		if (this->smoothBeenSet)
-		{
-			if (this->smooth)
-			{
-				ss << "Smooth Shading" << separator << outerTabAmount;
-			}
-			else
-			{
-				ss << "Flat Shading" << separator << outerTabAmount;
-			}
-		}
-		ss << "Faces: ";
-		int counter = 0;
-		for (vector<Face>::iterator i = this->faces.begin(); i != faces.end(); ++i)
-		{
-			ss << separator << innerTabAmount << (1 + counter++) << ": " << i->toString();
-			separator = ",\n";
-		}
-		return ss.str();
 	}
+	ss << "Faces: ";
+	int counter = 0;
+	for (vector<Face>::iterator i = this->faces.begin(); i != faces.end(); ++i)
+	{
+		ss << separator << innerTabAmount << (1 + counter++) << ": " << i->toString();
+		separator = ",\n";
+	}
+	return ss.str();
 }

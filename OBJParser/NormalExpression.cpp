@@ -3,7 +3,6 @@
 #include "TokenTypes.h"
 #include <sstream>
 #include <vector>
-#include "conversionFuncs.h"
 
 NormalExpression::NormalExpression(ObjectExpression* expression) :expression(expression)
 {
@@ -23,8 +22,12 @@ void* NormalExpression::interpret(void* context)
 		vector<float> vectorValues;
 		while (parser->currentTokenTypeIs(NUMBER))
 		{
-			vectorValues.push_back(myAtof(parser->getCurrentTokenInput()));
+			string input = parser->getCurrentTokenInput();
+			stringstream ss(input);
+			float vertexValue;
+			ss >> vertexValue;
 			parser->match(NUMBER);
+			vectorValues.push_back(vertexValue);
 		}
 		this->expression->addNormal(vectorValues);
 	}

@@ -7,26 +7,23 @@
 #include "Stream.h"
 #include <iostream>
 #include <fstream>
-#include <thread>
 
 using namespace std;
 
-Data::OBJData* parseData(string fileName, string outFile)
+OBJData parseData(string fileName, string outFile)
 {
 	ifstream ifile;
 	ifile.open(fileName);
 	ofstream ofile;
 	ofile.open(outFile);
 	Stream stream(ifile, ofile);
-	Parser parser;
-	Scanner scanner(stream,parser);
-	Data::OBJData* data = NULL;
+	Scanner scanner(stream);
+	OBJData data;
 	try
 	{
-		thread scan = thread(&Scanner::start,&scanner);
-		thread parse = thread(&Parser::parse,&parser);
-		scan.join();
-		parse.join();
+		scanner.start();
+		Parser parser(scanner.getTokens().begin());
+		parser.parse();
 		data = parser.getData();
 	}
 	catch (Token e)

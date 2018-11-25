@@ -40,7 +40,6 @@ void SymbolScannerState::readDigit()
 void SymbolScannerState::readCapitalAlphaChar()
 {
 	scanner->setState(scanner->getErrorState());
-	scanner->error();
 }
 
 void SymbolScannerState::readAlphaChar()
@@ -52,11 +51,6 @@ void SymbolScannerState::readDash()
 {
 	scanner->passIntoBuffer(scanner->getNext());
 	outputToken();
-}
-
-void SymbolScannerState::readUnderscore()
-{
-	readCapitalAlphaChar();
 }
 
 void SymbolScannerState::readPeriod()

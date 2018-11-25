@@ -22,11 +22,6 @@ void NumberScannerState::readDigit()
 	this->scanner->passIntoBuffer(this->scanner->getNext());
 }
 
-void NumberScannerState::readUnderscore()
-{
-	readWhiteSpace();
-}
-
 void NumberScannerState::readCapitalAlphaChar()
 {
 	scanner->setState(scanner->getErrorState());
@@ -46,7 +41,7 @@ void NumberScannerState::readDash()
 
 void NumberScannerState::readAlphaChar()
 {
-	readWhiteSpace();
+	this->scanner->passIntoBuffer(this->scanner->getNext());
 }
 
 void NumberScannerState::readWhiteSpace()

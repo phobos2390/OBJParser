@@ -12,8 +12,7 @@ public:
 	void readNegative();
 	void readDigit();
 	void readPeriod();
-	void readDash(); 
-	void readUnderscore();
+	void readDash();
 	void readCapitalAlphaChar();
 	void readAlphaChar();
 	void readWhiteSpace();
