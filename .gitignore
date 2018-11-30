@@ -1,2 +1,5 @@
 CMakeCache.txt
 CMakeFiles
+build
+*.swp
+objinfo

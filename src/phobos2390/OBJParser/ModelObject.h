@@ -16,7 +16,7 @@ private:
 	vector<float*> uvs;
 	vector<float*> normals;
 	vector<Group> groups;
-	vector<pair<int, int>> lines;
+	vector<pair<int, int> > lines;
 	string printVectors(string innerTabAmount, int sizeOfVec, vector<float*>::iterator begin, vector<float*>::iterator end);
 public:
 	ModelObject();
@@ -37,7 +37,7 @@ public:
 	vector<float*> getVertices();
 	vector<float*> getUVs();
 	vector<float*> getNormals();
-	vector<pair<int, int>> getLines();
+	vector<pair<int, int> > getLines();
 	vector<Group> getGroups();
 };
 
