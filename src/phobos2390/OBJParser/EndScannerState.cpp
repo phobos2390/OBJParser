@@ -10,6 +10,8 @@ void EndScannerState::readPeriod(){}
 
 void EndScannerState::readDigit(){}
 
+void EndScannerState::readUnderscore(){}
+
 void EndScannerState::readCapitalAlphaChar(){}
 
 void EndScannerState::readAlphaChar(){}

@@ -1,3 +1,5 @@
+#if defined(WIN32) || defined(__WIN32__) || defined(__WIN32) || defined(WIN32__) 
+
 #include "stdafx.h"
 #include "CppUnitTest.h"
 
@@ -16,3 +18,5 @@ namespace OBJParserTester
 
 	};
 }
+
+#endif

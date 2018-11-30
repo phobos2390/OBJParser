@@ -7,6 +7,7 @@
 #include "ModelObject.h"
 
 using namespace std;
+using namespace Data;
 
 class ObjectExpression :
 	public NonTerminalExpression

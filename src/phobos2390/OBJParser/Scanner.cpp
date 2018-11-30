@@ -3,9 +3,9 @@
 #include <cstdio>
 #include "TokenTypes.h"
 
-Scanner::Scanner(Stream iofstream):iofstream(iofstream),eof(false),invalidError(false),numTokens(0)
+Scanner::Scanner(Stream iofstream, Parser & parser):iofstream(iofstream),eof(false),parser(parser),invalidError(false),numTokens(0)
 {
-    this->standardState = new StandardScannerState(this);
+	this->standardState = new StandardScannerState(this);
 	this->errorState = new ErrorScannerState(this);
 	this->identifierState = new IdentifierScannerState(this);
 	this->numberState = new NumberScannerState(this);
@@ -140,6 +140,9 @@ void Scanner::readNext()
 		case '\t':
 			currentState->readWhiteSpace();
 			break;
+		case '_':
+			currentState->readUnderscore();
+			break;
 		case'#':
 			currentState->readPoundSign();
 			break;
@@ -190,15 +193,18 @@ void Scanner::outputToken(std::string type,std::string input,int lineNumber)
 	currentToken.setTokenType(type);
 	currentToken.setInput(input);
 	currentToken.setLineNumber(lineNumber);
-	allTokens.push_back(currentToken);
-	//ss << currentToken.output() << '\n';
-	numTokens++;
+	parser.addToken(currentToken);
 	currentToken.flush();
 }
 
-vector<Token>& Scanner::getTokens()
+vector<Token>::iterator Scanner::getTokensBegin()
 {
-	return allTokens;
+	return allTokens.begin();
+}
+
+vector<Token>::iterator Scanner::getTokensEnd()
+{
+	return allTokens.end();
 }
 
 //End of Scanner functions

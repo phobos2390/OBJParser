@@ -2,10 +2,12 @@
 #include <vector>
 #include "TokenTypes.h"
 #include "Parser.h"
+#include "MaterialExpression.h"
 
 #include <iostream>
 
 using namespace std;
+using namespace Data;
 
 ObjectExpression::ObjectExpression()
 {
@@ -80,9 +82,9 @@ void* ObjectExpression::interpret(void* context)
 		}
 		else if (parser->currentTokenTypeIs(OBJECT))
 		{
-			cout << "Parsing object: ";
 			while (parser->currentTokenTypeIs(OBJECT))
 			{
+				cout << "Parsing object: ";
 				parser->match(OBJECT);
 				this->currentObject.setIdentifier(parser->getCurrentTokenInput());
 				cout << this->currentObject.getIdentifier() << endl;
@@ -94,6 +96,28 @@ void* ObjectExpression::interpret(void* context)
 				parser->addObject(this->currentObject);
 				cout << "Done! " << endl;
 			}
+		}
+		else if (parser->currentTokenTypeIs(GROUP))
+		{
+			while (parser->currentTokenTypeIs(GROUP))
+			{
+				cout << "Parsing object: ";
+				parser->match(GROUP);
+				this->currentObject.setIdentifier(parser->getCurrentTokenInput());
+				cout << this->currentObject.getIdentifier() << endl;
+				parser->match(IDENTIFIER);
+				for (vector<IExpression*>::iterator j = this->getSubExpressionsStart(); j != this->getSubExpressionsEnd(); ++j)
+				{
+					(*j)->interpret(context);
+				}
+				parser->addObject(this->currentObject);
+				cout << "Done! " << endl;
+			}
+		}
+		else if (parser->currentTokenTypeIs(NEWMTL))
+		{
+			MaterialExpression expression;
+			expression.interpret(context);
 		}
 		else
 		{

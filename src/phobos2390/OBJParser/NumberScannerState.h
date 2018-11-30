@@ -14,6 +14,7 @@ public:
 	void readDigit();
 	void readPeriod();
 	void readDash();
+	void readUnderscore();
 	void readCapitalAlphaChar();
 	void readAlphaChar();
 	void readWhiteSpace();

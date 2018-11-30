@@ -3,8 +3,10 @@
 #include "TokenTypes.h"
 #include <sstream>
 #include <vector>
+#include "conversionFuncs.h"
 
 using namespace std;
+using namespace Data;
 
 FaceExpression::FaceExpression(ObjectExpression* expression) :expression(expression)
 {
@@ -24,7 +26,7 @@ void* FaceExpression::interpret(void* context)
 		|| parser->currentTokenTypeIs(USEMTL) 
 		|| parser->currentTokenTypeIs(SMOOTH))
 	{
-		bool setNewGroup = false;
+		currentGroup.clearFaces();
 		if (parser->currentTokenTypeIs(USEMAP))
 		{
 			parser->match(USEMAP);
@@ -57,30 +59,18 @@ void* FaceExpression::interpret(void* context)
 			vector<FaceVertex> vertices;
 			while (parser->currentTokenTypeIs(NUMBER))
 			{
-				string input = parser->getCurrentTokenInput();
-				stringstream ss;
-				ss << input;
-				int vertexValue;
-				ss >> vertexValue;
-				ss.clear();
-				FaceVertex addVertex(vertexValue);
+				FaceVertex addVertex(myAtoi(parser->getCurrentTokenInput()));
 				parser->match(NUMBER);
 				parser->match(DASH);
 				if (parser->currentTokenTypeIs(NUMBER))
 				{
-					ss << parser->getCurrentTokenInput();
-					ss >> vertexValue;
-					ss.clear();
-					addVertex.setUVIndex(vertexValue);
+					addVertex.setUVIndex(myAtoi(parser->getCurrentTokenInput()));
 					parser->match(NUMBER);
 				}
 				parser->match(DASH);
 				if (parser->currentTokenTypeIs(NUMBER))
 				{
-					ss << parser->getCurrentTokenInput();
-					ss >> vertexValue;
-					ss.clear();
-					addVertex.setNormalIndex(vertexValue);
+					addVertex.setNormalIndex(myAtoi(parser->getCurrentTokenInput()));
 					parser->match(NUMBER);
 				}
 				vertices.push_back(addVertex);

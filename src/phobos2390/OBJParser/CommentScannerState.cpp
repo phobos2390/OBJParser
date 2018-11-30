@@ -30,6 +30,11 @@ void CommentScannerState::readDash()
 	readDigit();
 }
 
+void CommentScannerState::readUnderscore()
+{
+	readDigit();
+}
+
 void CommentScannerState::readAlphaChar()
 {
 	readDigit();

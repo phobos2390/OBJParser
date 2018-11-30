@@ -4,6 +4,7 @@
 #include "Token.h"
 #include "TokenTypes.h"
 #include <sstream>
+#include "conversionFuncs.h"
 
 using namespace std;
 
@@ -25,12 +26,8 @@ void* UVExpression::interpret(void* context)
 		vector<float> vectorValues;
 		while (parser->currentTokenTypeIs(NUMBER))
 		{
-			string input = parser->getCurrentTokenInput();
-			stringstream ss(input);
-			float vertexValue;
-			ss >> vertexValue;
+			vectorValues.push_back(myAtof(parser->getCurrentTokenInput()));
 			parser->match(NUMBER);
-			vectorValues.push_back(vertexValue);
 		}
 		this->expression->addUV(vectorValues);
 	}

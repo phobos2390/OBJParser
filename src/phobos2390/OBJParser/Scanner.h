@@ -1,6 +1,7 @@
 #ifndef SCANNER_DEFINED
 #define SCANNER_DEFINED
 #include "Stream.h"
+#include "Parser.h"
 #include "IScannerState.h"
 #include "Token.h"
 #include <vector>
@@ -24,8 +25,9 @@ private:
 	IScannerState* symbolState;
 	IScannerState* errorState;
 	IScannerState* endState;
+	Parser& parser;
 public:
-	Scanner(Stream);
+	Scanner(Stream, Parser &);
 	~Scanner();
 	IScannerState* getStandardState();
 	IScannerState* getCommentState();
@@ -48,6 +50,7 @@ public:
 	void output(string);
 	int inputLineNumber();
 	void outputToken(std::string type,std::string input,int lineNumber);
-	vector<Token>& getTokens();
+	vector<Token>::iterator getTokensBegin();
+	vector<Token>::iterator getTokensEnd();
 };
 #endif
