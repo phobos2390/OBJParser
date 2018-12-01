@@ -9,7 +9,7 @@ private:
 	ObjectExpression* expression;
 public:
 	NormalExpression(ObjectExpression* expression);
-	~NormalExpression();
+	virtual ~NormalExpression();
 	void* interpret(void* context);
 };
 

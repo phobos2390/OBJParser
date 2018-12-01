@@ -9,7 +9,7 @@ private:
 	ObjectExpression* expression;
 public:
 	LineExpression(ObjectExpression* expression);
-	~LineExpression();
+	virtual ~LineExpression();
 	void* interpret(void* context);
 };
 

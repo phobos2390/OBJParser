@@ -33,6 +33,6 @@ public:
 	void setDiffuse(Color);
 	void setIllumination(int);
 	Material();
-	~Material();
+	virtual ~Material();
 };
 

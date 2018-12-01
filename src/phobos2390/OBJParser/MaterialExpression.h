@@ -6,7 +6,7 @@ class MaterialExpression :
 {
 public:
 	MaterialExpression();
-	~MaterialExpression();
+	virtual ~MaterialExpression();
 	void* interpret(void* context);
 };
 

@@ -9,7 +9,7 @@ private:
 	ObjectExpression* expression;
 public:
 	VertexExpression(ObjectExpression* expression);
-	~VertexExpression();
+	virtual ~VertexExpression();
 	void* interpret(void* context);
 };
 

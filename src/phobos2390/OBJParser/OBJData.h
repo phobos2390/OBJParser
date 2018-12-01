@@ -16,6 +16,7 @@ namespace Data
 		vector<ModelObject> objects;
 	public:
 		OBJData();
+                OBJData(const OBJData&);
 		~OBJData();
 		void addMaterialFileName(string fileName);
 		void addTextureFileName(string fileName);

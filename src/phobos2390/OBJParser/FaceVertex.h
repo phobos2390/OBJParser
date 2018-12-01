@@ -17,7 +17,7 @@ namespace Data
 	public:
 		FaceVertex(int);
 		FaceVertex(int, int, int);
-		~FaceVertex();
+		virtual ~FaceVertex();
 		int getVertexIndex();
 		int getUVIndex();
 		int getNormalIndex();

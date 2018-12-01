@@ -19,7 +19,7 @@ namespace Data
 		vector<Face> faces;
 	public:
 		Group();
-		~Group();
+		virtual ~Group();
 		string getMaterial();
 		string getTexture();
 		bool isSmooth();

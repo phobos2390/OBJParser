@@ -14,7 +14,7 @@ private:
 	void outputToken();
 public:
 	IdentifierScannerState(Scanner*);
-	~IdentifierScannerState();
+	virtual ~IdentifierScannerState();
 	void readNegative();
 	void readDigit();
 	void readPeriod();

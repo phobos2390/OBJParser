@@ -9,7 +9,7 @@ private:
 	ObjectExpression* expression;
 public:
 	UVExpression(ObjectExpression* expression);
-	~UVExpression();
+	virtual ~UVExpression();
 	void* interpret(void* context);
 };
 

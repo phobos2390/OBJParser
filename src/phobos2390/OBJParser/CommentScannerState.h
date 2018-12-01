@@ -8,7 +8,7 @@ private:
 	Scanner* scanner;
 public:
 	CommentScannerState(Scanner*);
-	~CommentScannerState();
+	virtual ~CommentScannerState();
 	void readNegative();
 	void readDigit();
 	void readPeriod();

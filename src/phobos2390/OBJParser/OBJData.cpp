@@ -4,6 +4,18 @@
 namespace Data
 {
 	OBJData::OBJData()
+        : materialFileNames()
+	, textureFileNames()
+	, materials()
+	, objects()
+        {
+	}
+
+	OBJData::OBJData(const OBJData& data)
+        : materialFileNames(data.materialFileNames)
+        , textureFileNames(data.textureFileNames)
+        , materials(data.materials)
+        , objects(data.objects)
 	{
 	}
 

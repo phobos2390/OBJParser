@@ -8,7 +8,7 @@ private:
 	Scanner* scanner;
 public:
 	ErrorScannerState(Scanner*);
-	~ErrorScannerState();
+	virtual ~ErrorScannerState();
 	void readNegative();
 	void readDigit();
 	void readPeriod();

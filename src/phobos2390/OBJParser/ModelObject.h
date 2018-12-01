@@ -24,7 +24,7 @@ namespace Data
 		string printVectors(string innerTabAmount, int sizeOfVec, vector<vector<float> >::iterator begin, vector<vector<float> >::iterator end);
 	public:
 		ModelObject();
-		~ModelObject();
+		virtual ~ModelObject();
 		void addVertex(float x, float y, float z);
 		void addVertex(float x, float y, float z, float w);
 		void addVertex(Vector3f vec);

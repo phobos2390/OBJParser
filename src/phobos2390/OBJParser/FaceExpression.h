@@ -9,7 +9,7 @@ private:
 	ObjectExpression* expression;
 public:
 	FaceExpression(ObjectExpression* expression);
-	~FaceExpression();
+	virtual ~FaceExpression();
 	void* interpret(void* context);
 };
 

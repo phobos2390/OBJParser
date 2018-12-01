@@ -6,7 +6,7 @@ class Color
 	float blue;
 public:
 	Color(float red, float green, float blue);
-	~Color();
+	virtual ~Color();
 	float getRed() const;
 	float getGreen() const;
 	float getBlue() const;

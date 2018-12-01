@@ -14,7 +14,7 @@ namespace Data
 	public:
 		Face(FaceVertex first, FaceVertex second, FaceVertex third);
 		Face(vector<FaceVertex> vertices);
-		~Face();
+		virtual ~Face();
 		void addVertex(FaceVertex vertex);
 		vector<FaceVertex> getVertices();
 		string toString();

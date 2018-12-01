@@ -5,7 +5,7 @@ class IExpression
 {
 public:
 	IExpression();
-	~IExpression();
+	virtual ~IExpression();
 	virtual void* interpret(void* context) = 0;
 };
 

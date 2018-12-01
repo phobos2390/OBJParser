@@ -9,7 +9,7 @@ private:
 	void outputToken();
 public:
 	NumberScannerState(Scanner*);
-	~NumberScannerState();
+	virtual ~NumberScannerState();
 	void readNegative();
 	void readDigit();
 	void readPeriod();

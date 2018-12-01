@@ -16,7 +16,7 @@ private:
 	ModelObject currentObject;
 public:
 	ObjectExpression();
-	~ObjectExpression();
+	virtual ~ObjectExpression();
 	void addVertex(vector<float> vertex);
 	void addUV(vector<float> uv);
 	void addNormal(vector<float> normal);

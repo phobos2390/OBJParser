@@ -28,6 +28,7 @@ Parser::~Parser()
 {
 	delete this->expression;
 	delete this->materialExpression;
+        delete this->data;
 }
 
 void Parser::addToken(Token toAdd)
