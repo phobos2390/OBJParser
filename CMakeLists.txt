@@ -14,7 +14,7 @@ set(VERSION_PATCH 0)
 #set(CMAKE_CXX_COMPILER 'g++')
 #set(CMAKE_C_COMPILER 'gcc')
 
-set(CMAKE_CXX_FLAGS '-g')
+set(CMAKE_CXX_FLAGS "-g -std=c++11")
 
 #file(GLOB resources '${CMAKE_CURRENT_SOURCE_DIR}/res/*')
 #message("moving ${resources} to binary directory")
