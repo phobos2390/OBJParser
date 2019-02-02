@@ -12,6 +12,8 @@ endforeach()
 
 set(LIB_NAME_SHARED ${PROJ_NAME}_${REPO_NAME})
 set(LIB_NAME_STATIC ${PROJ_NAME}_${REPO_NAME}_s)
+set(PHOBOS2390_OBJPARSER_STATIC_LIB ${LIB_NAME_STATIC})
+set(PHOBOS2390_OBJPARSER_SHARED_LIB ${LIB_NAME_SHARED})
 
 message("Building static library ${LIB_NAME_STATIC} with ${all_source_files}")
 add_library(${LIB_NAME_STATIC} STATIC ${all_source_files})
